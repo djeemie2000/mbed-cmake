@@ -6,7 +6,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.10)
 
 # ------------------------------------------------------------------------------
 # git checkout and build location of mbed libraries
-set(MBED_PATH "/opt/local/mbed/build")
+set(MBED_PATH "/home/pj/Repos/mbed/build")
 # location where the arm toolset is installed
 set(ARM_GCC_PATH "/opt/local/gcc-arm")
 
@@ -66,6 +66,16 @@ elseif(MBED_TARGET MATCHES "RBLAB_NRF51822")
   set(MBED_SYSTEM "system_nrf51822.o")
   set(MBED_LINK_TARGET "NRF51822")
 
+elseif(MBED_TARGET MATCHES "NUCLEO_F411RE")
+  set(MBED_VENDOR "STM")
+  set(MBED_FAMILY "STM32F4")
+  set(MBED_CPU "NUCLEO_F411RE")
+  set(MBED_CORE "cortex-m4")
+  set(MBED_INSTRUCTIONSET "M4")
+  set(MBED_STARTUP "startup_stm32f411xe.o")
+  set(MBED_SYSTEM "system_stm32f4xx.o")
+  set(MBED_LINK_TARGET "STM32F411XE")
+
 else()
    message(FATAL_ERROR "No MBED_TARGET specified or available. Full stop :(")
 endif()
@@ -87,13 +97,7 @@ SET(CMAKE_C_FLAGS "${COMMON_FLAGS} ${MBED_DEFINES} -std=gnu99")
 
 # ------------------------------------------------------------------------------
 # setup precompiled mbed files which will be needed for all projects
-set(MBED_OBJECTS
-  ${MBED_PATH}/mbed/TARGET_${MBED_TARGET}/${TOOLCHAIN}/${MBED_STARTUP}
-  ${MBED_PATH}/mbed/TARGET_${MBED_TARGET}/${TOOLCHAIN}/${MBED_SYSTEM}
-  ${MBED_PATH}/mbed/TARGET_${MBED_TARGET}/${TOOLCHAIN}/cmsis_nvic.o
-  ${MBED_PATH}/mbed/TARGET_${MBED_TARGET}/${TOOLCHAIN}/retarget.o
-  ${MBED_PATH}/mbed/TARGET_${MBED_TARGET}/${TOOLCHAIN}/board.o
-)
+file(GLOB MBED_OBJECTS ${MBED_PATH}/mbed/TARGET_${MBED_TARGET}/${TOOLCHAIN}/*.o)
 
 # ------------------------------------------------------------------------------
 # libraries for mbed

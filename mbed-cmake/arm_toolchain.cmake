@@ -8,9 +8,12 @@ INCLUDE(CMakeForceCompiler)
 SET(CMAKE_SYSTEM_NAME Generic)
  
 #-------------------------------------------------------------------------------
-# specify the cross compiler, later on we will set the correct path
-CMAKE_FORCE_C_COMPILER(arm-none-eabi-gcc GNU)
-CMAKE_FORCE_CXX_COMPILER(arm-none-eabi-g++ GNU)
+# specify the cross compiler, later on we will set the correct path??
+set(TOOLCHN_PATH /home/pj/ToolChains/gcc-arm-none-eabi-4_9-2015q3/bin)
+
+CMAKE_FORCE_C_COMPILER(${TOOLCHN_PATH}/arm-none-eabi-gcc GNU)
+CMAKE_FORCE_CXX_COMPILER(${TOOLCHN_PATH}/arm-none-eabi-g++ GNU)
+
 
 #-------------------------------------------------------------------------------
 set(TOOLCHAIN TOOLCHAIN_GCC_ARM)
@@ -19,6 +22,6 @@ set(TOOLCHAIN TOOLCHAIN_GCC_ARM)
 # define presets
 set(USE_RTOS false)
 set(USE_NET false)
-set(USE_USB false)
-set(USE_DSP false)
+set(USE_USB true)
+set(USE_DSP true)
 

@@ -7,7 +7,7 @@
 # set the arm toolchain
 set(CMAKE_TOOLCHAIN_FILE mbed-cmake/arm_toolchain.cmake)
 
-cmake_minimum_required(VERSION 3.0.1)
+cmake_minimum_required(VERSION 2.8.1)
 
 project (BlinkLed C CXX ASM)
 
@@ -16,14 +16,15 @@ project (BlinkLed C CXX ASM)
 
 #set(MBED_TARGET LPC1768)
 #set(MBED_TARGET LPC11U24)
-set(MBED_TARGET RBLAB_NRF51822)
+#set(MBED_TARGET RBLAB_NRF51822)
+set(MBED_TARGET NUCLEO_F411RE)
 
 # ------------------------------------------------------------------------------
 # will add the include dirs and link the lib
 #set(USE_RTOS true)
 #set(USE_NET true)
-#set(USE_USB true)
-#set(USE_DSP true)
+set(USE_USB true)
+set(USE_DSP true)
 
 # ------------------------------------------------------------------------------
 # for installing an serial console
