@@ -115,6 +115,10 @@ set(CMAKE_EXE_LINKER_FLAGS "-Wl,--gc-sections -Wl,--wrap,main --specs=nano.specs
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} \"-T${MBED_PATH}/mbed/TARGET_${MBED_TARGET}/${TOOLCHAIN}/${MBED_LINK_TARGET}.ld\" -static")
 
 # ------------------------------------------------------------------------------
+# add mbed headers so they will show in your IDE
+file(GLOB MBED_HEADERS ${MBED_PATH}/mbed/*.h)
+
+# ------------------------------------------------------------------------------
 # mbed
 include_directories("${MBED_PATH}/mbed/")
 include_directories("${MBED_PATH}/mbed/TARGET_${MBED_TARGET}/")

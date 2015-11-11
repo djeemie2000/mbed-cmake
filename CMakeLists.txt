@@ -46,5 +46,5 @@ include(mbed-cmake/arm_mbed.cmake)
 
 # ------------------------------------------------------------------------------
 # build the executable
-add_executable(${BIN} ${BLINKLED_SRC} ${MBED_OBJECTS})
+add_executable(${BIN} ${BLINKLED_SRC} ${MBED_OBJECTS} ${MBED_HEADERS})
 target_link_libraries(${BIN} ${MBED_LIBS})
