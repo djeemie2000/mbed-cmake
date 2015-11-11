@@ -12,3 +12,6 @@ install_manifest.txt
 .DS_Store
 .ic
 
+#qt cmake stuff
+*.user
+*build*
