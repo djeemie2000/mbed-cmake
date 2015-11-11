@@ -18,6 +18,12 @@ add_custom_target(upload
 )
 
 # ------------------------------------------------------------------------------
+# custom target for creating bin file that can be uploaded to mbed device
+add_custom_target(createupload
+  arm-none-eabi-objcopy -O binary ${BIN} ${BIN}.bin
+)
+
+# ------------------------------------------------------------------------------
 # custom target for opening serial console
 add_custom_target(sercon
   command screen ${SERCON} 9600
