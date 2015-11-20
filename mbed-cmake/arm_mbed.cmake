@@ -92,6 +92,8 @@ endif()
 SET(COMMON_FLAGS "${COMMON_FLAGS} -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -fno-exceptions -fno-builtin -MMD -fno-delete-null-pointer-checks")
 SET(COMMON_FLAGS "${COMMON_FLAGS} -mcpu=${MBED_CORE} -O2 -mthumb -fno-exceptions -msoft-float -ffunction-sections -fdata-sections -fno-common -fmessage-length=0")
 #SET(COMMON_FLAGS "${COMMON_FLAGS} -g") # use debug symbols
+SET(COMMON_FLAGS "${COMMON_FLAGS} -mfpu=fpv4-sp-d16 -mfloat-abi=softfp")#fpu defines!!
+
 
 SET(MBED_DEFINES "${MBED_DEFINES} -DTARGET_${MBED_FAMILY}")
 SET(MBED_DEFINES "${MBED_DEFINES} -DTARGET_${MBED_TARGET}")
@@ -99,6 +101,8 @@ SET(MBED_DEFINES "${MBED_DEFINES} -DTARGET_${MBED_INSTRUCTIONSET}")
 SET(MBED_DEFINES "${MBED_DEFINES} -DTARGET_${MBED_VENDOR}")
 SET(MBED_DEFINES "${MBED_DEFINES} -DTOOLCHAIN_GCC_ARM")
 SET(MBED_DEFINES "${MBED_DEFINES} -DTOOLCHAIN_GCC")
+#additional defines from generated makefiles
+SET(MBED_DEFINES "${MBED_DEFINES} -D__FPU_PRESENT=1 -D__MBED__=1 -DTARGET_FF_MORPHO -DARM_MATH_CM4")
 
 SET(CMAKE_CXX_FLAGS "${COMMON_FLAGS} ${MBED_DEFINES} -std=c++11")
 SET(CMAKE_C_FLAGS "${COMMON_FLAGS} ${MBED_DEFINES} -std=gnu99")
