@@ -9,8 +9,12 @@ SET(CMAKE_SYSTEM_NAME Generic)
  
 #-------------------------------------------------------------------------------
 # specify the cross compiler, later on we will set the correct path
-CMAKE_FORCE_C_COMPILER(arm-none-eabi-gcc GNU)
-CMAKE_FORCE_CXX_COMPILER(arm-none-eabi-g++ GNU)
+
+# location where the arm toolset is installed
+set(ARM_GCC_PATH "/opt/local/gcc-arm/bin/")
+
+CMAKE_FORCE_C_COMPILER(${ARM_GCC_PATH}arm-none-eabi-gcc GNU)
+CMAKE_FORCE_CXX_COMPILER(${ARM_GCC_PATH}arm-none-eabi-g++ GNU)
 
 
 #-------------------------------------------------------------------------------

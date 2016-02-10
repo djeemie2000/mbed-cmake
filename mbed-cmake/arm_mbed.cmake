@@ -7,20 +7,21 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.10)
 # ------------------------------------------------------------------------------
 # git checkout and build location of mbed libraries
 set(MBED_PATH "/home/pj/Repos/mbed/build")
+
 # location where the arm toolset is installed
-set(ARM_GCC_PATH "/opt/local/gcc-arm")
+message(STATUS "${ARM_GCC_PATH} is where toolchain is installed")
 
 # ------------------------------------------------------------------------------
 # custom target for copying to mbed device
 add_custom_target(upload
-  arm-none-eabi-objcopy -O binary ${BIN} ${BIN}.bin
+  ${ARM_GCC_PATH}arm-none-eabi-objcopy -O binary ${BIN} ${BIN}.bin
   COMMAND cp ${BIN}.bin ${MBEDMOUNT}
 )
 
 # ------------------------------------------------------------------------------
 # custom target for creating bin file that can be uploaded to mbed device
 add_custom_target(createupload
-  arm-none-eabi-objcopy -O binary ${BIN} ${BIN}.bin
+  ${ARM_GCC_PATH}arm-none-eabi-objcopy -O binary ${BIN} ${BIN}.bin
 )
 
 # ------------------------------------------------------------------------------
