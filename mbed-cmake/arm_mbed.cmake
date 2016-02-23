@@ -84,6 +84,17 @@ elseif(MBED_TARGET MATCHES "NUCLEO_F411RE")
   set(MBED_SYSTEM "system_stm32f4xx.o")
   set(MBED_LINK_TARGET "STM32F411XE")
 
+elseif(MBED_TARGET MATCHES "NUCLEO_F446RE")
+  set(MBED_VENDOR "STM")
+  set(MBED_FAMILY "STM32F4")
+  set(MBED_CPU "NUCLEO_F446RE")
+  set(MBED_CORE "cortex-m4")
+  set(MBED_INSTRUCTIONSET "M4")
+
+  set(MBED_STARTUP "startup_stm32f446xx.o")
+  set(MBED_SYSTEM "system_stm32f4xx.o")
+  set(MBED_LINK_TARGET "STM32F446XE")
+
 else()
    message(FATAL_ERROR "No MBED_TARGET specified or available. Full stop :(")
 endif()
