@@ -196,6 +196,9 @@ if(${USE_USB} STREQUAL "true")
 
   link_directories("${MBED_PATH}/usb/TARGET_${MBED_TARGET}/${TOOLCHAIN}")
   set(MBED_LIBS ${MBED_LIBS} USBDevice)
+
+  # add mbed usb headers so they will show in your IDE
+  file(GLOB MBED_HEADERS ${MBED_PATH}/usb/*.h)
 endif()
 
 # add dsp
@@ -206,6 +209,9 @@ if(${USE_DSP} STREQUAL "true")
 
   link_directories("${MBED_PATH}/dsp/TARGET_${MBED_TARGET}/${TOOLCHAIN}")
   set(MBED_LIBS ${MBED_LIBS} cmsis_dsp dsp)
+
+  # add mbed dsp headers so they will show in your IDE
+  file(GLOB MBED_HEADERS ${MBED_PATH}/dsp/*.h)
 endif()
 
 # print all include directories
